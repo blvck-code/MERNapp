@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import WorkoutDetail from "../components/WorkoutDetail";
+import WorkoutForm from "../components/WorkoutForm";
 
 const Home = () => {
   const [workouts, setWorkouts] = useState(null);
@@ -12,15 +14,18 @@ const Home = () => {
         setWorkouts(json);
       }
     };
-    fetchWorkouts();
+    fetchWorkouts().then((r) => console.log("R ==>>", r));
   }, []);
 
   return (
-    <div className="Home">
+    <div className="home">
       <div className="workouts">
         {workouts &&
-          workouts.map((workout) => <p key={workout._id}>{workout.title}</p>)}
+          workouts.map((workout) => (
+            <WorkoutDetail workout={workout} key={workout._id} />
+          ))}
       </div>
+      <WorkoutForm />
     </div>
   );
 };
