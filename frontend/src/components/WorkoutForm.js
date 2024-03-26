@@ -14,24 +14,23 @@ const WorkoutForm = () => {
 
     const workout = { title, load, reps };
 
-    const resp = await fetch("/api/workouts", {
+    const response = await fetch("/api/workouts", {
       method: "POST",
       body: JSON.stringify(workout),
       headers: {
         "Content-Type": "application/json",
       },
     });
-    const json = await resp.json();
+    const json = await response.json();
 
-    if (!resp.ok) {
+    if (!response.ok) {
       setError(json.error);
     }
-    if (resp.ok) {
+    if (response.ok) {
+      setError(null);
       setTitle("");
       setLoad("");
       setReps("");
-      setError(null);
-      console.log("Success ==>>", json);
       dispatch({ type: "CREATE_WORKOUT", payload: json });
     }
   };
@@ -40,25 +39,29 @@ const WorkoutForm = () => {
     <form className="create" onSubmit={handleSubmit}>
       <h3>Add a New Workout</h3>
 
-      <label>Exercise Title: </label>
+      <label>Exercise Title:</label>
       <input
         type="text"
         onChange={(e) => setTitle(e.target.value)}
         value={title}
       />
-      <label>Load (in kg): </label>
+
+      <label>Load (in kg):</label>
       <input
         type="number"
         onChange={(e) => setLoad(e.target.value)}
         value={load}
       />
-      <label>Reps: </label>
+
+      <label>Number of Reps:</label>
       <input
         type="number"
         onChange={(e) => setReps(e.target.value)}
         value={reps}
       />
+
       <button>Add Workout</button>
+      {error && <div className="error">{error}</div>}
     </form>
   );
 };

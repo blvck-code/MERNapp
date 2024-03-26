@@ -16,7 +16,7 @@ const Home = () => {
       }
     };
     fetchWorkouts().then((r) => console.log("R ==>>", r));
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="home">
