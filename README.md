@@ -12,7 +12,7 @@ This is a MERN (MongoDB, Express.js, React.js, Node.js) application for tracking
 ## Setup Instructions
 
 1. Clone the repository:
-   git clone [https://github.com/yourusername/workout-tracker.git](https://github.com/blvck-code/MERNapp.git)
+   git clone [https://github.com/blvck-code/MERNapp.git](https://github.com/blvck-code/MERNapp.git)
 2. Navigate to the project directory:
    cd workout-tracker
 3. Install dependencies:
